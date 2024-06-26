@@ -45,6 +45,7 @@
 		2B5E01822C274542008B79FA /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				FeedItemMapper.swift,
 				RemoteFeedLoader.swift,
 			);
 			target = 2B369A232C1AE58100C48504 /* EssentialFeed */;
