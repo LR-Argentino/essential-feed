@@ -17,7 +17,7 @@ class FeedItemMapper {
             return items.map { $0.item }
         }
     }
-
+    
     // Represent the FeedItem in API Module
     private struct Item: Decodable {
         let id: UUID
@@ -29,13 +29,12 @@ class FeedItemMapper {
             return FeedItem(id: id, description: description, location: location, imageURL: image)
         }
     }
-
-    static func map(_ data: Data, from response: HTTPURLResponse) throws -> [FeedItem] {
-        guard response.statusCode == OK_200 else {
-            throw RemoteFeedLoader.Error.invalidData
+    
+    static func map(_ data: Data, from response: HTTPURLResponse) -> RemoteFeedLoader.Result {
+        guard response.statusCode == OK_200, let root = try? JSONDecoder().decode(Root.self, from: data)else {
+            return .failure(.invalidData)
         }
-        let root = try JSONDecoder().decode(Root.self, from: data)
         
-        return root.items.map { $0.item }
+        return .success(root.feed)
     }
 }

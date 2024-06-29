@@ -46,6 +46,7 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				FeedItemMapper.swift,
+				HTTPClient.swift,
 				RemoteFeedLoader.swift,
 			);
 			target = 2B369A232C1AE58100C48504 /* EssentialFeed */;
