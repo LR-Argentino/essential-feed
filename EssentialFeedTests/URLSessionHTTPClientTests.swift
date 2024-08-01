@@ -61,8 +61,22 @@ final class URLSessionHTTPClientTests: XCTestCase {
         XCTAssertNotNil(receivedError)
     }
     
-    func test_getFromURL_failsOnAllNilValues() {
+    func test_getFromURL_failsOnAllInvalidRepresentationCases() {
+        let anyData = Data("any data".utf8)
+        let nonHTTPResponse = URLResponse(url: anyURL(), mimeType: nil, expectedContentLength: 0, textEncodingName: nil)
+        let anyHTTPResponse = HTTPURLResponse(url: anyURL(), mimeType: nil, expectedContentLength: 0, textEncodingName: nil)
+        let anyError = NSError(domain: "any", code: 0, userInfo: nil)
+        
         XCTAssertNotNil(resultErrorFor(data: nil, response: nil, error: nil))
+        XCTAssertNotNil(resultErrorFor(data: nil, response: nonHTTPResponse, error: nil))
+        XCTAssertNotNil(resultErrorFor(data: nil, response: anyHTTPResponse, error: nil))
+        XCTAssertNotNil(resultErrorFor(data: anyData, response: anyHTTPResponse, error: nil))
+        XCTAssertNotNil(resultErrorFor(data: anyData, response: anyHTTPResponse, error: anyError))
+        XCTAssertNotNil(resultErrorFor(data: nil, response: nonHTTPResponse, error: anyError))
+        XCTAssertNotNil(resultErrorFor(data: nil, response: anyHTTPResponse, error: anyError))
+        XCTAssertNotNil(resultErrorFor(data: anyData, response: nonHTTPResponse, error: anyError))
+        XCTAssertNotNil(resultErrorFor(data: anyData, response: anyHTTPResponse, error: anyError))
+        XCTAssertNotNil(resultErrorFor(data: anyData, response: nonHTTPResponse, error: nil))
     }
     
     
@@ -79,7 +93,7 @@ final class URLSessionHTTPClientTests: XCTestCase {
         return url
     }
     
-    private func resultErrorFor(data: Data?, response: HTTPURLResponse?, error: Error?, file: StaticString = #filePath, line: UInt = #line) -> Error? {
+    private func resultErrorFor(data: Data?, response: URLResponse?, error: Error?, file: StaticString = #filePath, line: UInt = #line) -> Error? {
         URLProtocolStub.stub(data: data, response: response, error: error)
         
         let sut = makeSUT(file: file, line: line)
@@ -107,7 +121,7 @@ final class URLSessionHTTPClientTests: XCTestCase {
         
         private struct Stub {
             let data: Data?
-            let response: HTTPURLResponse?
+            let response: URLResponse?
             let error: Error?
         }
         
@@ -121,7 +135,7 @@ final class URLSessionHTTPClientTests: XCTestCase {
             requestObserver = nil
         }
         
-        static func stub(data: Data?, response:  HTTPURLResponse? ,error: Error?) {
+        static func stub(data: Data?, response:  URLResponse? ,error: Error?) {
             stub = Stub(data: data, response: response, error: error)
         }
         
