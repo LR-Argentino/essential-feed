@@ -26,31 +26,37 @@ class URLSessionHTTPClient {
 
 final class URLSessionHTTPClientTests: XCTestCase {
 
-    func test_getFromURL_performGETRequestWithURL() {
+    override class func setUp() {
+        super.setUp()
         URLProtocolStub.startInterceptingRequest()
-        
+    }
+    
+    override class func tearDown() {
+        super.tearDown()
+        URLProtocolStub.stopInteceptingRequest()
+    }
+    
+    func test_getFromURL_performGETRequestWithURL() {
         let url = URL(string: "http://wrong-url.com")!
-        let exp = expectation(description: "Wait for request")
+        let sut = makeSUT()
         
+        let exp = expectation(description: "Wait for request")
         URLProtocolStub.observeRequest { request in
             XCTAssertEqual(request.url, url)
             XCTAssertEqual(request.httpMethod, "GET")
             exp.fulfill()
         }
         
-        URLSessionHTTPClient().get(from: url) {_ in}
+        sut.get(from: url) {_ in}
         wait(for: [exp], timeout: 1)
-        
-        URLProtocolStub.stopInteceptingRequest()
     }
     
     func test_getFromURL_failsOnRequestError() {
-        URLProtocolStub.startInterceptingRequest()
         let url = URL(string: "www.apple.com")!
         let error = NSError(domain: "any", code: 0, userInfo: nil)
         URLProtocolStub.stub(data: nil, response: nil, error: error)
         
-        let sut = URLSessionHTTPClient()
+        let sut = makeSUT()
         
         let exp = expectation(description: "Wait for completion")
         sut.get(from: url) { result in
@@ -63,10 +69,14 @@ final class URLSessionHTTPClientTests: XCTestCase {
             exp.fulfill()
         }
         wait(for: [exp], timeout: 1.0)
-        URLProtocolStub.stopInteceptingRequest()
     }
     
     // MARK: - Helpers
+    
+    private func makeSUT() -> URLSessionHTTPClient {
+        return URLSessionHTTPClient()
+    }
+    
     private class URLProtocolStub: URLProtocol {
         private static var stub: Stub?
         private static var requestObserver: ((URLRequest) -> Void)?
