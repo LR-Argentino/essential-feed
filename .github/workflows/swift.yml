@@ -7,7 +7,7 @@ on:
 
 jobs:
   build-and-test:
-    runs-on: macos-12  # Verwenden Sie macos-12 oder eine neuere Version, um die neueste Xcode-Version zu unterstützen
+    runs-on: macos-latest  # Verwenden Sie macos-latest, um die neueste macOS-Version und Xcode zu unterstützen
 
     timeout-minutes: 8
 
@@ -17,10 +17,6 @@ jobs:
     - name: List repository files
       run: ls -R
 
-    - name: Install Xcode 16 beta
-      run: sudo softwareupdate --install-rosetta --agree-to-license
-      if: runner.os == 'macOS'
-      
     - name: Select Xcode 16 beta
       run: sudo xcode-select -switch /Applications/Xcode_16_beta.app
 
