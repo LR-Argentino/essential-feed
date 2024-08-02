@@ -40,6 +40,7 @@
 		2B2F064D2C5D5EC000AA9ADA /* EssentialFeedAPIEndToEndTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EssentialFeedAPIEndToEndTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B2F06572C5D60E000AA9ADA /* EssentialFeedAPIEndToEndTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "EssentialFeedAPIEndToEndTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		2B2F06582C5D60E100AA9ADA /* EssentialFeedAPIEndToEndTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EssentialFeedAPIEndToEndTests.swift; sourceTree = "<group>"; };
+		2B2F065C2C5D79F600AA9ADA /* CI.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = CI.xctestplan; sourceTree = "<group>"; };
 		2B369A242C1AE58100C48504 /* EssentialFeed.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EssentialFeed.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B369A272C1AE58100C48504 /* EssentialFeed.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EssentialFeed.h; sourceTree = "<group>"; };
 		2B369A282C1AE58100C48504 /* EssentialFeed.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = EssentialFeed.docc; sourceTree = "<group>"; };
@@ -55,6 +56,13 @@
 				"XCTestCase+MemoryLeakTracking.swift",
 			);
 			target = 2B369A2D2C1AE58100C48504 /* EssentialFeedTests */;
+		};
+		2B2F065B2C5D68D100AA9ADA /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"XCTestCase+MemoryLeakTracking.swift",
+			);
+			target = 2B2F064C2C5D5EC000AA9ADA /* EssentialFeedAPIEndToEndTests */;
 		};
 		2B5E017E2C274528008B79FA /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
@@ -77,7 +85,7 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		2B043EF82C5B9E5400F98ADF /* Helpers */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (2B043EFB2C5B9E7000F98ADF /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Helpers; sourceTree = "<group>"; };
+		2B043EF82C5B9E5400F98ADF /* Helpers */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (2B043EFB2C5B9E7000F98ADF /* PBXFileSystemSynchronizedBuildFileExceptionSet */, 2B2F065B2C5D68D100AA9ADA /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Helpers; sourceTree = "<group>"; };
 		2B5E017D2C274520008B79FA /* Feed Feature */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (2B5E017E2C274528008B79FA /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = "Feed Feature"; sourceTree = "<group>"; };
 		2B5E017F2C27452B008B79FA /* Feed API */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (2B5E01822C274542008B79FA /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = "Feed API"; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -121,6 +129,7 @@
 		2B369A1A2C1AE58100C48504 = {
 			isa = PBXGroup;
 			children = (
+				2B2F065C2C5D79F600AA9ADA /* CI.xctestplan */,
 				2B2F06482C5D57CE00AA9ADA /* EssentialFeed.xctestplan */,
 				2B369A262C1AE58100C48504 /* EssentialFeed */,
 				2B369A322C1AE58100C48504 /* EssentialFeedTests */,
