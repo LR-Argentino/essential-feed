@@ -1,30 +1,29 @@
-
 name: CI-macOS
 
-# Controls when the action will run. 
-# Triggers the workflow on pull request events but only for the master branch.
 on:
   push:
     branches:
       - master
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build-and-test"
   build-and-test:
-    # The type of runner that the job will run on
-    runs-on: macos-14
+    runs-on: macos-12  # Verwenden Sie macos-12 oder eine neuere Version, um die neueste Xcode-Version zu unterstützen
 
     timeout-minutes: 8
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v4
 
-    - name: Select Xcode
-      run: sudo xcode-select -switch /Applications/Xcode_15.4.app
+    - name: List repository files
+      run: ls -R
+
+    - name: Install Xcode 16 beta
+      run: sudo softwareupdate --install-rosetta --agree-to-license
+      if: runner.os == 'macOS'
       
+    - name: Select Xcode 16 beta
+      run: sudo xcode-select -switch /Applications/Xcode_16_beta.app
+
     - name: Xcode version
       run: /usr/bin/xcodebuild -version
       
