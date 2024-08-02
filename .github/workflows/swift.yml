@@ -17,9 +17,6 @@ jobs:
     - name: List repository files
       run: ls -R
 
-    - name: Move to right directory
-      run: cd .. | cd .. | cd .. | cd Applications/Xcode-beta.app/
-
     - name: Select Xcode 16 beta
       run: sudo xcode-select -switch /Applications/Xcode-beta.app
 
