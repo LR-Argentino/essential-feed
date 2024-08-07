@@ -43,8 +43,3 @@
 	]
 }
 ```
-
-
-## Instructions
-
-The goal of this exercise is to get you used to the TDD flow.
