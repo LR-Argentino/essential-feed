@@ -1,4 +1,4 @@
-## EssentialFeed Architecture
+## EssentialFeed Architecture (⚠️ still in progress.... ⚠️)
 
 ![Architecture_EssentialFeed](https://github.com/user-attachments/assets/567b2e5b-ea08-466c-898a-370775bd2d9c)
 
