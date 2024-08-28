@@ -18,19 +18,17 @@ final class CacheFeedUseCaseTests: XCTestCase {
     
     func test_save_requestsCacheDeletion() {
         let (sut, store) = makeSUT()
-        let items = [uniqueItems(), uniqueItems()]
         
-        sut.save(items) { _ in}
+        sut.save(uniqueItemsWithLocal().models) { _ in}
         
         XCTAssertEqual(store.recievedMessages, [.deleteCachedFeed])
     }
     
     func test_save_doesNotRequestCacheInsertionOnDeletionError() {
         let (sut, store) = makeSUT()
-        let items = [uniqueItems(), uniqueItems()]
         let deletionError = anyError()
         
-        sut.save(items) { _ in }
+        sut.save(uniqueItemsWithLocal().models) { _ in }
         store.completeDeletion(with: deletionError)
         
         XCTAssertEqual(store.recievedMessages, [.deleteCachedFeed])
@@ -39,14 +37,11 @@ final class CacheFeedUseCaseTests: XCTestCase {
     func test_save_requestsNewCacheInsertionWithTimestampOnSuccessfulDeletion() {
         let timestamp = Date()
         let (sut, store) = makeSUT(currentDate: { timestamp })
-        let items = [uniqueItems(), uniqueItems()]
-        let localFeedItems = items.map{
-            LocalFeedItem(id: $0.id, description: $0.description, location: $0.location, imageURL: $0.imageURL)
-        }
-        sut.save(items) { _ in }
+        let (models, local) = uniqueItemsWithLocal()
+        sut.save(models) { _ in }
         store.completeDeletionSuccessfully()
         
-        XCTAssertEqual(store.recievedMessages, [.deleteCachedFeed, .insert(localFeedItems, timestamp: timestamp)])
+        XCTAssertEqual(store.recievedMessages, [.deleteCachedFeed, .insert(local, timestamp: timestamp)])
     }
     
     func test_save_failsOnDeletionError() {
@@ -106,6 +101,15 @@ final class CacheFeedUseCaseTests: XCTestCase {
     // MARK: - Helpers
     private func uniqueItems() -> FeedItem {
         return FeedItem(id: UUID(), description: "any description", location: "any location", imageURL: URL(string: "www.any-image.com")!)
+    }
+    
+    private func uniqueItemsWithLocal() -> (models: [FeedItem], local: [LocalFeedItem]) {
+        let models = [uniqueItems(), uniqueItems()]
+        let local = models.map{
+            LocalFeedItem(id: $0.id, description: $0.description, location: $0.location, imageURL: $0.imageURL)
+        }
+        
+        return (models, local)
     }
     
     private func makeSUT(currentDate: @escaping () -> Date = Date.init, file: StaticString = #filePath,
