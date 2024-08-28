@@ -17,7 +17,7 @@ public final class RemoteFeedLoader: FeedLoader {
     }
     
     public enum Result: Equatable {
-        case success([FeedItem])
+        case success([FeedImage])
         case failure(Error)
     }
     
@@ -48,10 +48,10 @@ public final class RemoteFeedLoader: FeedLoader {
         }
     }
 }
-private extension Array where Element == RemoteFeedItem {
-    func toRemoteFeedItems() -> [FeedItem] {
+private extension Array where Element == RemoteFeedImage {
+    func toRemoteFeedItems() -> [FeedImage] {
         return map {
-            FeedItem(id: $0.id, description: $0.description, location: $0.location, imageURL: $0.image)
+            FeedImage(id: $0.id, description: $0.description, location: $0.location, url: $0.image)
         }
     }
 }

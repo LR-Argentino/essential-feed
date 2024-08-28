@@ -63,7 +63,7 @@
 		2B5E017E2C274528008B79FA /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				FeedItem.swift,
+				FeedImage.swift,
 				FeedLoader.swift,
 			);
 			target = 2B369A232C1AE58100C48504 /* EssentialFeed */;
@@ -71,9 +71,9 @@
 		2B5E01822C274542008B79FA /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				FeedItemMapper.swift,
+				FeedImageMapper.swift,
 				HTTPClient.swift,
-				RemoteFeedItem.swift,
+				RemoteFeedImage.swift,
 				RemoteFeedLoader.swift,
 				URLSessionHTTPClient.swift,
 			);
@@ -83,7 +83,7 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				FeedStore.swift,
-				LocalFeedItem.swift,
+				LocalFeedImage.swift,
 				LocalFeedLoader.swift,
 			);
 			target = 2B369A232C1AE58100C48504 /* EssentialFeed */;
