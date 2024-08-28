@@ -83,6 +83,7 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				FeedStore.swift,
+				LocalFeedItem.swift,
 				LocalFeedLoader.swift,
 			);
 			target = 2B369A232C1AE58100C48504 /* EssentialFeed */;
