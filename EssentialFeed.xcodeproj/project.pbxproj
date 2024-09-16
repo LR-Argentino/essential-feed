@@ -81,6 +81,13 @@
 			);
 			target = 2B369A232C1AE58100C48504 /* EssentialFeed */;
 		};
+		2B5F60562C98B809005A5222 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				FeedStoreSpy.swift,
+			);
+			target = 2B369A2D2C1AE58100C48504 /* EssentialFeedTests */;
+		};
 		2BABCC372C7E5AAD009A4F74 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -105,6 +112,7 @@
 		2B043EF82C5B9E5400F98ADF /* Helpers */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (2B043EFB2C5B9E7000F98ADF /* PBXFileSystemSynchronizedBuildFileExceptionSet */, 2B2F065B2C5D68D100AA9ADA /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Helpers; sourceTree = "<group>"; };
 		2B5E017D2C274520008B79FA /* Feed Feature */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (2B5E017E2C274528008B79FA /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = "Feed Feature"; sourceTree = "<group>"; };
 		2B5E017F2C27452B008B79FA /* Feed API */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (2B5E01822C274542008B79FA /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = "Feed API"; sourceTree = "<group>"; };
+		2B5F60522C98B7FD005A5222 /* Helpers */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (2B5F60562C98B809005A5222 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Helpers; sourceTree = "<group>"; };
 		2BABCC342C7E5A9E009A4F74 /* Feed Cache */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (2BABCC372C7E5AAD009A4F74 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = "Feed Cache"; sourceTree = "<group>"; };
 		2BB9C5662C7DC2480081B3E0 /* Feed API */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (2BB9C5672C7DC24F0081B3E0 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = "Feed API"; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -192,6 +200,7 @@
 		2BB9C5652C7DC22E0081B3E0 /* Feed Cache */ = {
 			isa = PBXGroup;
 			children = (
+				2B5F60522C98B7FD005A5222 /* Helpers */,
 				2BB9C5682C7DC27E0081B3E0 /* CacheFeedUseCaseTests.swift */,
 				2B5F60502C98B485005A5222 /* LoadFeedFromCacheUseCaseTests.swift */,
 			);
