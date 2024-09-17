@@ -53,6 +53,7 @@
 		2B043EFB2C5B9E7000F98ADF /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				SharedTestHelpers.swift,
 				"XCTestCase+MemoryLeakTracking.swift",
 			);
 			target = 2B369A2D2C1AE58100C48504 /* EssentialFeedTests */;
@@ -60,6 +61,7 @@
 		2B2F065B2C5D68D100AA9ADA /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				SharedTestHelpers.swift,
 				"XCTestCase+MemoryLeakTracking.swift",
 			);
 			target = 2B2F064C2C5D5EC000AA9ADA /* EssentialFeedAPIEndToEndTests */;
@@ -86,6 +88,7 @@
 		2B5F60562C98B809005A5222 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				FeedCacheTestHelpers.swift,
 				FeedStoreSpy.swift,
 			);
 			target = 2B369A2D2C1AE58100C48504 /* EssentialFeedTests */;

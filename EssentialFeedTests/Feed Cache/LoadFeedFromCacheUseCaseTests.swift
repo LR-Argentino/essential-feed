@@ -161,13 +161,7 @@ final class LoadFeedFromCacheUseCaseTests: XCTestCase {
         
         return (sut, store)
     }
-    
-    
-    private func anyNSError() -> NSError {
-        let error = NSError(domain: "any", code: 0, userInfo: nil)
-        return error
-    }
-    
+
     private func expect(_ sut: LocalFeedLoader, toCompleteWith
                         expectedResult: LocalFeedLoader.LoadResult, when action: () -> Void, file: StaticString = #filePath,
                         line: UInt = #line) {
@@ -190,27 +184,5 @@ final class LoadFeedFromCacheUseCaseTests: XCTestCase {
         wait(for: [exp], timeout: 1.0)
         
     }
-    
-    private func uniqueImageFeed() -> FeedImage {
-        return FeedImage(id: UUID(), description: "any description", location: "any location", url: URL(string: "www.any-image.com")!)
-    }
-    
-    private func uniqueImageFeeds() -> (models: [FeedImage], local: [LocalFeedImage]) {
-        let models = [uniqueImageFeed(), uniqueImageFeed()]
-        let local = models.map{
-            LocalFeedImage(id: $0.id, description: $0.description, location: $0.location, url: $0.url)
-        }
-        
-        return (models, local)
-    }
 }
 
-private extension Date {
-    func adding(days: Int) -> Date {
-        return Calendar(identifier: .gregorian).date(byAdding: .day, value: days, to: self)!
-    }
-    
-    func adding(seconds: TimeInterval) -> Date {
-        return self + seconds
-    }
-}

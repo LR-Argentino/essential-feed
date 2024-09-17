@@ -57,32 +57,4 @@ final class ValidateFeedCacheUseCaseTests: XCTestCase {
         
         return (sut, store)
     }
-    
-    private func anyNSError() -> NSError {
-        let error = NSError(domain: "any", code: 0, userInfo: nil)
-        return error
-    }
-    
-    private func uniqueImageFeed() -> FeedImage {
-        return FeedImage(id: UUID(), description: "any description", location: "any location", url: URL(string: "www.any-image.com")!)
-    }
-    
-    private func uniqueImageFeeds() -> (models: [FeedImage], local: [LocalFeedImage]) {
-        let models = [uniqueImageFeed(), uniqueImageFeed()]
-        let local = models.map{
-            LocalFeedImage(id: $0.id, description: $0.description, location: $0.location, url: $0.url)
-        }
-        
-        return (models, local)
-    }
-}
-
-private extension Date {
-    func adding(days: Int) -> Date {
-        return Calendar(identifier: .gregorian).date(byAdding: .day, value: days, to: self)!
-    }
-    
-    func adding(seconds: TimeInterval) -> Date {
-        return self + seconds
-    }
 }
