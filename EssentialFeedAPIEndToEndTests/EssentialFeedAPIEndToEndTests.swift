@@ -12,10 +12,10 @@ final class EssentialFeedAPIEndToEndTests: XCTestCase {
     
     func test_endToEndTestServerGETFeedResult_matchesFixedTestAccoundData() {
         switch getFeedResult() {
-        case .success(let feedItems):
-            XCTAssertEqual(feedItems.count, 8, "Expected 8 items in the test account feed")
+        case .success(let imageFeed):
+            XCTAssertEqual(imageFeed.count, 8, "Expected 8 items in the test account feed")
             
-            feedItems.enumerated().forEach { (index, item) in
+            imageFeed.enumerated().forEach { (index, item) in
                 XCTAssertEqual(item, expectedItems(at: index))
             }
             
@@ -48,8 +48,8 @@ final class EssentialFeedAPIEndToEndTests: XCTestCase {
         return receivedResult
     }
     
-    private func expectedItems(at index: Int) -> FeedItem {
-        return FeedItem(id: id(at: index), description: description(at: index), location: location(at: index), imageURL: imageURL(at: index))
+    private func expectedItems(at index: Int) -> FeedImage {
+        return FeedImage(id: id(at: index), description: description(at: index), location: location(at: index), url: imageURL(at: index))
     }
     
     private func id(at index: Int) -> UUID {
