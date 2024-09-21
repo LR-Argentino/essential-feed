@@ -96,6 +96,7 @@
 		2BABCC372C7E5AAD009A4F74 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				FeedCachePolicy.swift,
 				FeedStore.swift,
 				LocalFeedImage.swift,
 				LocalFeedLoader.swift,
