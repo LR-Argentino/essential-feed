@@ -1,6 +1,6 @@
 ## EssentialFeed Architecture (⚠️ still in progress.... ⚠️)
 
-![Architecture_EssentialFeed](https://github.com/user-attachments/assets/567b2e5b-ea08-466c-898a-370775bd2d9c)
+<img width="1337" alt="Bildschirmfoto 2024-09-21 um 18 09 22" src="https://github.com/user-attachments/assets/a2932a84-daf4-4d46-90db-df38bb104df1">
 
 
 ### Remote Feed Image Spec
