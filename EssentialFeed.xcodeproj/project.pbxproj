@@ -15,6 +15,7 @@
 		2B5F60512C98B485005A5222 /* LoadFeedFromCacheUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5F60502C98B485005A5222 /* LoadFeedFromCacheUseCaseTests.swift */; };
 		2BB85B832C99E92600F613FF /* ValidateFeedCacheUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB85B822C99E92600F613FF /* ValidateFeedCacheUseCaseTests.swift */; };
 		2BB9C5692C7DC27E0081B3E0 /* CacheFeedUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB9C5682C7DC27E0081B3E0 /* CacheFeedUseCaseTests.swift */; };
+		2BD52F462CA48C1B00F43FE4 /* CodableFeedStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD52F452CA48C1B00F43FE4 /* CodableFeedStoreTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		2B5F60502C98B485005A5222 /* LoadFeedFromCacheUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadFeedFromCacheUseCaseTests.swift; sourceTree = "<group>"; };
 		2BB85B822C99E92600F613FF /* ValidateFeedCacheUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidateFeedCacheUseCaseTests.swift; sourceTree = "<group>"; };
 		2BB9C5682C7DC27E0081B3E0 /* CacheFeedUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheFeedUseCaseTests.swift; sourceTree = "<group>"; };
+		2BD52F452CA48C1B00F43FE4 /* CodableFeedStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableFeedStoreTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -210,6 +212,7 @@
 				2BB9C5682C7DC27E0081B3E0 /* CacheFeedUseCaseTests.swift */,
 				2B5F60502C98B485005A5222 /* LoadFeedFromCacheUseCaseTests.swift */,
 				2BB85B822C99E92600F613FF /* ValidateFeedCacheUseCaseTests.swift */,
+				2BD52F452CA48C1B00F43FE4 /* CodableFeedStoreTests.swift */,
 			);
 			path = "Feed Cache";
 			sourceTree = "<group>";
@@ -369,6 +372,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2BD52F462CA48C1B00F43FE4 /* CodableFeedStoreTests.swift in Sources */,
 				2BB9C5692C7DC27E0081B3E0 /* CacheFeedUseCaseTests.swift in Sources */,
 				2B5F60512C98B485005A5222 /* LoadFeedFromCacheUseCaseTests.swift in Sources */,
 				2BB85B832C99E92600F613FF /* ValidateFeedCacheUseCaseTests.swift in Sources */,
