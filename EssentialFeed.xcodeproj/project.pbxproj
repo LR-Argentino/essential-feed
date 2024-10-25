@@ -45,6 +45,7 @@
 		2B369A272C1AE58100C48504 /* EssentialFeed.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EssentialFeed.h; sourceTree = "<group>"; };
 		2B369A282C1AE58100C48504 /* EssentialFeed.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = EssentialFeed.docc; sourceTree = "<group>"; };
 		2B369A2E2C1AE58100C48504 /* EssentialFeedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EssentialFeedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2B507E1F2CCC25AB00D7B81A /* EssentialFeedAPIEndToEndTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = EssentialFeedAPIEndToEndTests.xctestplan; sourceTree = "<group>"; };
 		2B5F60502C98B485005A5222 /* LoadFeedFromCacheUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadFeedFromCacheUseCaseTests.swift; sourceTree = "<group>"; };
 		2BB85B822C99E92600F613FF /* ValidateFeedCacheUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidateFeedCacheUseCaseTests.swift; sourceTree = "<group>"; };
 		2BB9C5682C7DC27E0081B3E0 /* CacheFeedUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheFeedUseCaseTests.swift; sourceTree = "<group>"; };
@@ -164,6 +165,7 @@
 		2B369A1A2C1AE58100C48504 = {
 			isa = PBXGroup;
 			children = (
+				2B507E1F2CCC25AB00D7B81A /* EssentialFeedAPIEndToEndTests.xctestplan */,
 				2B2F065C2C5D79F600AA9ADA /* CI.xctestplan */,
 				2B2F06482C5D57CE00AA9ADA /* EssentialFeed.xctestplan */,
 				2B369A262C1AE58100C48504 /* EssentialFeed */,
