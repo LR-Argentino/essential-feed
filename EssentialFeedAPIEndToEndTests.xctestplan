@@ -9,7 +9,11 @@
     }
   ],
   "defaultOptions" : {
-
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:EssentialFeed.xcodeproj",
+      "identifier" : "2B2F064C2C5D5EC000AA9ADA",
+      "name" : "EssentialFeedAPIEndToEndTests"
+    }
   },
   "testTargets" : [
     {
