@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23094" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="r0f-oT-TH0">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23084"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--My Feed-->
+        <scene sceneID="wDm-qt-wFg">
+            <objects>
+                <tableViewController id="ENO-k7-zhZ" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="T2v-hO-usp">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FeedImageCell" rowHeight="496" id="CSD-ya-EAS">
+                                <rect key="frame" x="0.0" y="50" width="393" height="496"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CSD-ya-EAS" id="k8P-mz-3Tv">
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="496"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="w5c-PS-gOS">
+                                            <rect key="frame" x="20" y="0.0" width="353" height="520"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="1l9-d2-rMn" userLabel="Location Container">
+                                                    <rect key="frame" x="0.0" y="0.0" width="103" height="20.333333333333332"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pin.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="mJV-wD-aAk">
+                                                            <rect key="frame" x="0.0" y="-0.3333333333333357" width="19.666666666666668" height="21.666666666666668"/>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cupertino" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BRF-jh-NjS">
+                                                            <rect key="frame" x="27.666666666666664" y="0.0" width="75.333333333333343" height="20.333333333333332"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Fa-1s-i17" userLabel="Image Container">
+                                                    <rect key="frame" x="0.0" y="36.333333333333343" width="353" height="353"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9sH-m8-8FY">
+                                                            <rect key="frame" x="0.0" y="0.0" width="353" height="353"/>
+                                                        </imageView>
+                                                    </subviews>
+                                                    <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                                    <constraints>
+                                                        <constraint firstItem="9sH-m8-8FY" firstAttribute="leading" secondItem="1Fa-1s-i17" secondAttribute="leading" id="Ebd-6L-8EH"/>
+                                                        <constraint firstAttribute="bottom" secondItem="9sH-m8-8FY" secondAttribute="bottom" id="iSK-Je-EyR"/>
+                                                        <constraint firstItem="9sH-m8-8FY" firstAttribute="top" secondItem="1Fa-1s-i17" secondAttribute="top" id="r55-3E-e4g"/>
+                                                        <constraint firstAttribute="trailing" secondItem="9sH-m8-8FY" secondAttribute="trailing" id="uSN-cz-3lk"/>
+                                                        <constraint firstAttribute="width" secondItem="1Fa-1s-i17" secondAttribute="height" multiplier="1:1" id="xxZ-TR-BLz"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="22"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8XY-6u-WtT">
+                                                    <rect key="frame" x="0.0" y="405.33333333333331" width="351.66666666666669" height="114.66666666666669"/>
+                                                    <string key="text">Cupertino is a city in California's Silicon Valley. Known as the headquarters of Apple, it's also home to parks like trail-lined Rancho San Antonio Open Space Preserve, with a working farm. Fremont Older Open Space Preserve has equestrian routes. The McClellan Ranch Preserve is a former horse ranch with a nature museum. Set in a stately late-1800s mansion, the California History Center has regional history displays.</string>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="1Fa-1s-i17" firstAttribute="width" secondItem="w5c-PS-gOS" secondAttribute="width" id="J9q-Ag-K5O"/>
+                                            </constraints>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="w5c-PS-gOS" secondAttribute="trailing" id="doO-ZX-7gC"/>
+                                        <constraint firstItem="w5c-PS-gOS" firstAttribute="top" secondItem="k8P-mz-3Tv" secondAttribute="top" id="mxJ-ko-BrG"/>
+                                        <constraint firstItem="w5c-PS-gOS" firstAttribute="leading" secondItem="k8P-mz-3Tv" secondAttribute="leadingMargin" id="rXw-1e-85f"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="ENO-k7-zhZ" id="Y9Q-DO-jNI"/>
+                            <outlet property="delegate" destination="ENO-k7-zhZ" id="hgV-OR-Vzs"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="My Feed" id="Wn6-m4-b0q"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UvU-nD-Prv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="681.67938931297704" y="-52.112676056338032"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="97J-28-DvZ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="r0f-oT-TH0" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="END-LH-HXF">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ENO-k7-zhZ" kind="relationship" relationship="rootViewController" id="R1w-hM-nOA"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JSW-Al-T42" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-245.03816793893128" y="-52.112676056338032"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="pin.fill" catalog="system" width="116" height="128"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
