@@ -8,34 +8,8 @@
 
 import XCTest
 import EssentialFeed
-import UIKit
+import EssentialFeediOS
 
-final class FeedViewController: UITableViewController {
-    private var loader: FeedLoader?
-    
-    convenience init(loader: FeedLoader) {
-        self.init()
-        self.loader = loader
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        refreshControl = UIRefreshControl()
-        refreshControl?.addTarget(self, action: #selector (load), for: .valueChanged)
- 
-        load()
-    }
-    
-    @objc private func load() {
-        refreshControl?.beginRefreshing()
-        loader?.load { [weak self] _ in
-            
-            self?.refreshControl?.endRefreshing()
-        }
-    }
-    
-}
 
 final class FeedViewControllerTests: XCTestCase {
     
@@ -68,19 +42,45 @@ final class FeedViewControllerTests: XCTestCase {
         sut.simulateUserInitiatedFeedReload()
         XCTAssertTrue(sut.isShowingLoadingIndicator, "Expected loading indicator once view is loaded")
         
-        loader.completeLoading(at: 0)
+        loader.completeFeedLoading(at: 0)
         XCTAssertFalse(sut.isShowingLoadingIndicator, "Expected no loading indicator once loading is completed")
         
         sut.simulateUserInitiatedFeedReload()
         XCTAssertTrue(sut.isShowingLoadingIndicator, "Expected loading indicator once user initiates a reload")
 
-        loader.completeLoading(at: 1)
+        loader.completeFeedLoading(at: 1)
         XCTAssertFalse(sut.isShowingLoadingIndicator, "Expected no loading indicator once loading is completed")
+    }
+    
+    func test_loadFeedCompletion_rendersSuccessfullyLoadedFeed() {
+        let image0 = makeImage(description: "a description", loaction: "a location")
+        let image1 = makeImage(description: nil, loaction: "a location 2")
+        let image2 = makeImage(description: "a description 2", loaction: nil)
+        let image3 = makeImage(description: nil, loaction: nil)
+        
+        let (sut, loader) = makeSUT()
+        
+        sut.loadViewIfNeeded()
+        
+        XCTAssertEqual(sut.numberOfRenderedFeedImagesView(), 0)
+        
+        loader.completeFeedLoading(with: [image0], at: 0)
+        
+        XCTAssertEqual(sut.numberOfRenderedFeedImagesView(), 1)
+        
+        sut.simulateUserInitiatedFeedReload()
+        loader.completeFeedLoading(with: [image0, image1, image2, image3], at: 1)
+        XCTAssertEqual(sut.numberOfRenderedFeedImagesView(), 4)
+        
+        assertThat(sut, hasViewConfiguredFor: image0, at: 0)
+        assertThat(sut, hasViewConfiguredFor: image1, at: 1)
+        assertThat(sut, hasViewConfiguredFor: image2, at: 2)
+        assertThat(sut, hasViewConfiguredFor: image3, at: 3)
     }
     
     // MARK: - Helpers
 
-    class LoaderSpy: FeedLoader{
+    class LoaderSpy: FeedLoader {
         private(set) var completions: [(FeedLoader.Result) -> Void] = []
         
         var loadCallCount: Int {
@@ -90,10 +90,10 @@ final class FeedViewControllerTests: XCTestCase {
             completions.append(completion)
         }
         
-        func completeLoading(at index: Int) {
-            completions[index](.success([]))
+        func completeFeedLoading(with feed: [FeedImage] = [], at index: Int) {
+            completions[index](.success(feed))
         }
-        
+
     }
     
     
@@ -105,9 +105,30 @@ final class FeedViewControllerTests: XCTestCase {
         
         return (sut, loader)
     }
+    
+    private func makeImage(description: String? = nil, loaction: String? = nil, url: URL = URL(string: "a url")!) -> FeedImage {
+        return FeedImage(id: UUID(), description: description, location: loaction, url: url)
+    }
+    
+    private func assertThat(_ sut: FeedViewController, hasViewConfiguredFor image: FeedImage, at index: Int, file: StaticString = #file, line: UInt = #line) {
+        let view = sut.feedImageView(at: index)
+        
+        guard let cell = view as? FeedImageCell else {
+            return XCTFail("Expected \(FeedImageCell.self) instance, got \(String(describing: view)) instead", file: file, line: line)
+        }
+        
+        let shouldLocationBeVisible = (image.location != nil)
+        
+        XCTAssertEqual(cell.isShowingLocation, shouldLocationBeVisible, "Expected `isShowingLoaction` to be \(shouldLocationBeVisible) for image view at index (\(index))", file: file, line: line)
+        XCTAssertEqual(cell.locationText, image.location, "Expected location text to be \(String(describing: image.location)) for image view at index (\(index))", file: file, line: line)
+        XCTAssertEqual(cell.descriptionText, image.description, "Expected description text to be \(String(describing: image.description)) for image view at index (\(index))", file: file, line: line)
+    }
 }
 
-extension FeedViewController {
+
+// MARK: - DSL Helper
+
+private extension FeedViewController {
     func simulateUserInitiatedFeedReload() {
         refreshControl?.simulatePullToRefresh()
     }
@@ -115,7 +136,38 @@ extension FeedViewController {
     var isShowingLoadingIndicator: Bool {
         return refreshControl?.isRefreshing == true
     }
+    
+    func numberOfRenderedFeedImagesView() -> Int {
+        return tableView.numberOfRows(inSection: feedImageSection)
+    }
+    
+    func feedImageView(at row: Int) -> UITableViewCell? {
+        let ds = tableView.dataSource
+        let index = IndexPath(row: row, section: feedImageSection)
+        
+        return ds?.tableView(tableView, cellForRowAt: index)
+    }
+    
+    private var feedImageSection: Int {
+        return 0
+    }
+    
 }
+
+private extension FeedImageCell {
+    var isShowingLocation: Bool {
+        return !locationContainer.isHidden
+    }
+    
+    var locationText: String? {
+        return locationLabel.text
+    }
+    
+    var descriptionText: String? {
+        return descriptionLabel.text
+    }
+}
+
 
 
 extension UIRefreshControl {
@@ -127,6 +179,8 @@ extension UIRefreshControl {
         }
     }
 }
+
+// MARK: - Test Doubles
 
 private extension FeedViewController {
     func replaceRefreshControlWithFakeForiOS17Support() {

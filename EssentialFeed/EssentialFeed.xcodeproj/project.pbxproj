@@ -48,6 +48,8 @@
 		08DDC13A21BEA99E00F490ED /* LoadFeedFromRemoteUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DDC13921BEA99E00F490ED /* LoadFeedFromRemoteUseCaseTests.swift */; };
 		08E5941522523FCC00E2D213 /* FeedCachePolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E5941422523FCC00E2D213 /* FeedCachePolicy.swift */; };
 		2B706C812D74729200EC309A /* EssentialFeediOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B706C772D74729200EC309A /* EssentialFeediOS.framework */; };
+		2BE7D4342D75F30A00B097F5 /* EssentialFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 080EDEF121B6DA7E00813479 /* EssentialFeed.framework */; };
+		2BE7D4352D75F30A00B097F5 /* EssentialFeed.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 080EDEF121B6DA7E00813479 /* EssentialFeed.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,7 +81,28 @@
 			remoteGlobalIDString = 2B706C762D74729200EC309A;
 			remoteInfo = EssentialFeediOS;
 		};
+		2BE7D4362D75F30A00B097F5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 080EDEE821B6DA7E00813479 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 080EDEF021B6DA7E00813479;
+			remoteInfo = EssentialFeed;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		2BE7D4382D75F30A00B097F5 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				2BE7D4352D75F30A00B097F5 /* EssentialFeed.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		080EDEF121B6DA7E00813479 /* EssentialFeed.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EssentialFeed.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -170,6 +193,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2BE7D4342D75F30A00B097F5 /* EssentialFeed.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -195,6 +219,7 @@
 				0832C67E22A0223A00E1C5E9 /* EssentialFeedCacheIntegrationTests */,
 				2B706C782D74729200EC309A /* EssentialFeediOS */,
 				2B706C842D74729200EC309A /* EssentialFeediOSTests */,
+				2BE7D4332D75F30A00B097F5 /* Frameworks */,
 				080EDEF221B6DA7E00813479 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -357,6 +382,13 @@
 			path = "Feed API";
 			sourceTree = "<group>";
 		};
+		2BE7D4332D75F30A00B097F5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -457,10 +489,12 @@
 				2B706C732D74729200EC309A /* Sources */,
 				2B706C742D74729200EC309A /* Frameworks */,
 				2B706C752D74729200EC309A /* Resources */,
+				2BE7D4382D75F30A00B097F5 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				2BE7D4372D75F30A00B097F5 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				2B706C782D74729200EC309A /* EssentialFeediOS */,
@@ -702,6 +736,11 @@
 			target = 2B706C762D74729200EC309A /* EssentialFeediOS */;
 			targetProxy = 2B706C822D74729200EC309A /* PBXContainerItemProxy */;
 		};
+		2BE7D4372D75F30A00B097F5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 080EDEF021B6DA7E00813479 /* EssentialFeed */;
+			targetProxy = 2BE7D4362D75F30A00B097F5 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
@@ -710,6 +749,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -777,6 +817,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -813,6 +854,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
